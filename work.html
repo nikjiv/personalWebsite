@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nikhil Jivan — Work</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+
+  <!-- Preload background -->
+  <link rel="preload" as="image" href="images/computer_fish_midjourney.png">
+
+  <style>
+    :root{ --paper:#f5e8c7; --ink:#8b4513; --amber:#d2a679; }
+    body{ font-family:'VT323', monospace; margin:0; background:#000; color:var(--paper); }
+
+    /* NAV */
+    #navbar{ position:fixed; inset:0 auto auto 0; right:0; z-index:30; background:transparent; }
+    #navbar .blend-text{ text-shadow:0 2px 6px rgba(0,0,0,.45); }
+    .nav-link{ transition: transform .25s ease; }
+    @media (min-width:768px){ .nav-link:hover{ transform:scale(1.08);} }
+    @media (max-width:767px){ .nav-link:hover{ transform:none; text-decoration:underline; } }
+    .social-icon{ transition: transform .25s ease, color .25s ease; }
+    .social-icon:hover{ transform:scale(1.15); color:var(--paper); }
+
+    /* WORK — background + overlay */
+    #work{
+      position:relative; min-height:100svh;
+      display:flex; align-items:center; justify-content:center;
+      padding: clamp(2rem,6vw,4rem) 1rem; overflow:hidden; text-align:center;
+    }
+    #work::before{
+      content:""; position:absolute; inset:0;
+      background:url("images/computer_fish_midjourney.png") center/cover no-repeat;
+      filter: brightness(.75) saturate(1.05);
+    }
+    #work::after{
+      content:""; position:absolute; inset:0;
+      background:
+        radial-gradient(60% 60% at 50% 45%, rgba(0,0,0,.22) 0%, rgba(0,0,0,.6) 100%),
+        linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.38) 45%, rgba(0,0,0,.28));
+    }
+
+    /* WIP message (subtle glass strip so it pops, still blends) */
+    .wip-wrap{
+      position:relative; z-index:1; max-width:820px; margin:0 auto;
+      background: linear-gradient(to bottom, rgba(0,0,0,.28), rgba(0,0,0,.20));
+      border:1px solid rgba(245,232,199,.10);
+      border-radius:18px; padding:2.25rem;
+      backdrop-filter: blur(4px);
+      box-shadow:0 12px 28px rgba(0,0,0,.25);
+    }
+    .wip-wrap h2{
+      font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+      margin:0 0 .25rem; letter-spacing:1px;
+      text-shadow:0 2px 6px rgba(0,0,0,.55);
+    }
+    .wip-wrap .bar{
+      width:96px; height:3px; margin:.6rem auto 1.25rem;
+      background:var(--amber); border-radius:999px; opacity:.75;
+    }
+    .wip-wrap p{ font-size:clamp(1.1rem,1.8vw,1.35rem); line-height:1.9rem; opacity:.95; }
+
+    @media (min-width:1024px){ #work::before{ background-attachment:fixed; } }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-3xl text-[var(--paper)] font-bold blend-text">Nikhil Jivan</h1>
+      <div class="hidden md:flex items-center space-x-6 blend-text">
+        <ul class="flex space-x-6">
+          <li><a href="index.html" class="nav-link text-[var(--paper)] text-xl">Home</a></li>
+          <li><a href="about.html" class="nav-link text-[var(--paper)] text-xl">About</a></li>
+          <li><a href="work.html"  class="nav-link text-[var(--paper)] text-xl">Work</a></li>
+        </ul>
+        <div class="flex space-x-4">
+          <a href="mailto:nickjivan@gmail.com" class="social-icon text-[var(--paper)] text-2xl"><i class="fas fa-envelope"></i></a>
+          <a href="https://x.com/yourusername" class="social-icon text-[var(--paper)] text-2xl"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://linkedin.com/in/yourusername" class="social-icon text-[var(--paper)] text-2xl"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/yourusername" class="social-icon text-[var(--paper)] text-2xl"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <button id="menu-btn" class="md:hidden text-[var(--paper)] text-3xl blend-text" aria-controls="mobile-menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-[rgba(0,0,0,.55)] backdrop-blur px-4 py-6 space-y-4">
+      <a href="index.html" class="block text-[var(--paper)] text-xl nav-link">Home</a>
+      <a href="about.html" class="block text-[var(--paper)] text-xl nav-link">About</a>
+      <a href="work.html"  class="block text-[var(--paper)] text-xl nav-link">Work</a>
+    </div>
+  </nav>
+
+  <!-- WORK IN PROGRESS -->
+  <section id="work">
+    <div class="wip-wrap">
+      <h2>Work In Progress</h2>
+      <div class="bar"></div>
+      <p>
+            Under Construction 🔨
+      </p>
+    </div>
+  </section>
+
+  <script>
+    const menuBtn=document.getElementById('menu-btn');
+    const mobileMenu=document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click',()=>{const h=mobileMenu.classList.toggle('hidden');menuBtn.setAttribute('aria-expanded',h?'false':'true');});
+  </script>
+</body>
+</html>
