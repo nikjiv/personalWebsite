@@ -116,7 +116,7 @@
   <script>
     // Typing effect
     const typingText = document.getElementById('typing-text');
-    const text = "Hi, I'm Nikhil"; let i = 0;
+    const text = "Hey, I'm Nikhil"; let i = 0;
     function type(){ if(i < text.length){ typingText.textContent = text.slice(0, ++i); setTimeout(type, 150);} }
     window.addEventListener('load', ()=> setTimeout(type, 500));
 
