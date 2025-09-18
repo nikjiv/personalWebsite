@@ -120,6 +120,50 @@
     @media (min-width:1024px){
       #about::before{ background-attachment: fixed; }
     }
+        /* ---------- NAV LINK HOVER (desktop) ---------- */
+        .nav-link{
+      position: relative;
+      transition: color .2s ease, transform .2s ease, text-shadow .2s ease;
+    }
+
+    @media (min-width:768px){
+      /* animated underline */
+      .nav-link::after{
+        content:"";
+        position:absolute; left:0; right:0; bottom:-6px; height:2px;
+        background: var(--amber);
+        border-radius: 999px;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform .25s ease;
+        opacity:.9;
+      }
+
+      /* hover = slight lift + glow + underline reveal */
+      .nav-link:hover{
+        transform: translateY(-1px) scale(1.08); /* similar vibe to socials */
+        color: var(--paper);
+        text-shadow: 0 0 10px rgba(245,232,199,.45);
+      }
+      .nav-link:hover::after{ transform: scaleX(1); }
+    }
+
+    /* ---------- Mobile tweaks (no hover on touch) ---------- */
+    @media (max-width:767px){
+      .nav-link{ transition: color .15s ease; }
+      .nav-link:active{ color: var(--amber); } /* tap feedback */
+    }
+
+    /* ---------- Current page indicator ---------- */
+    .nav-link[aria-current="page"],
+    .nav-link.active{
+      color: var(--amber);
+    }
+    .nav-link[aria-current="page"]::after,
+    .nav-link.active::after{
+      transform: scaleX(1);
+    }
+
   </style>
 </head>
 
